@@ -35,7 +35,7 @@ public class DeLPExample {
 			
 			System.out.println("Processing this Knowledge-base: " + filePath);			
 			writer.write("--------");			
-			writer.write("Knowledge Base test-case:" + fileEntry.getName());
+			writer.write("Knowledge Base test-case: " + fileEntry.getName());
 			writer.newLine();
 			
 			DelpParser parser = new DelpParser();
@@ -44,25 +44,29 @@ public class DeLPExample {
 			FolFormula query1 = (FolFormula) parser.parseFormula("ConsentCompliance(telehealthserviceserver, patient1)");
 			FolFormula query2 = (FolFormula) parser.parseFormula("ConsentCompliance(telehealthserviceserver, patient2)");
 			FolFormula query3 = (FolFormula) parser.parseFormula("ConsentCompliance(telehealthserviceserver, patient3)");
-			
+
 			for (int j = 1; j < 4; j++) {
 				writer.write("Query to Knowledge base: " + "query" + String.valueOf(j));
 				writer.newLine();
 				
-				for (int i = 0; i < 10; i++) {				
-		            long startTime = System.currentTimeMillis();
-		            
-		            if (j == 1) {
-		            	writer.write("Run: " + (i + 1) + " " + reasoner.query(delp, query1));
+				FolFormula query;
+				String result;
+
+				if (j == 1) {
+		            	query = query1;
 		            } else if (j == 2) {
-		            	writer.write("Run: " + (i + 1) + " " + reasoner.query(delp, query2));
+		            	query = query2;
 		            } else // j == 3
-		            	writer.write("Run: " + (i + 1) + " " + reasoner.query(delp, query3));
-		            
+		            	query = query3;				
+
+				for (int i = 0; i < 10; i++) {				
+		            long startTime = System.currentTimeMillis();		            
+					result = reasoner.query(delp, query).toString();		            
 		            long endTime = System.currentTimeMillis();
+					
 		            long executionTime = endTime - startTime;
 		            // Write the result to file
-		            writer.write(" Execution Time: " + executionTime);
+		            writer.write(" Run: " + i + " Result: " + result + "Execution Time: " + executionTime);
 		            writer.newLine();
 				}
 				writer.newLine();
