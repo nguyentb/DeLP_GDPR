@@ -66,7 +66,7 @@ public class DeLPExample {
 					
 		            long executionTime = endTime - startTime;
 		            // Write the result to file
-		            writer.write(" Run: " + i + " Result: " + result + "Execution Time: " + executionTime);
+		            writer.write(" Run: " + i + " " + result + " Execution Time: " + executionTime);
 		            writer.newLine();
 				}
 				writer.newLine();

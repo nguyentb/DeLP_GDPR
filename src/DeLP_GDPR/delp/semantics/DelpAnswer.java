@@ -4,10 +4,10 @@ package DeLP_GDPR.delp.semantics;
 public class DelpAnswer {
 
     public enum Type {
-        YES ("The answer is: YES"),
-        NO ("The answer is: NO"),
-        UNDECIDED ("The answer is: UNDECIDED"),
-        UNKNOWN ("The answer is: UNKNOWN");
+        YES ("YES"),
+        NO ("NO"),
+        UNDECIDED ("UNDECIDED"),
+        UNKNOWN ("UNKNOWN");
 
         private final String text;
 
